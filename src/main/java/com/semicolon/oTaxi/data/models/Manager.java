@@ -14,7 +14,6 @@ import org.springframework.validation.annotation.Validated;
 @AllArgsConstructor
 @NoArgsConstructor
 @Validated
-@Builder
 @Entity(name = " Manager")
 
 
