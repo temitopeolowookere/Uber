@@ -1,9 +1,9 @@
 package com.semicolon.oTaxi.controllers;
 
-import com.semicolon.oTaxi.data.models.Rider;
 import com.semicolon.oTaxi.dto.request.LoginRiderRequest;
 import com.semicolon.oTaxi.dto.request.RegisterRiderRequest;
 import com.semicolon.oTaxi.dto.response.ApiResponse;
+import com.semicolon.oTaxi.dto.response.LoginRiderResponse;
 import com.semicolon.oTaxi.dto.response.RegisterRiderResponse;
 import com.semicolon.oTaxi.exceptions.InvalidEmailException;
 import com.semicolon.oTaxi.exceptions.MismatchedPasswordException;
@@ -43,7 +43,7 @@ public class RiderController {
 
     @GetMapping("/rider/login")
     public ResponseEntity<?> login(@RequestBody @NotNull @Valid LoginRiderRequest loginRiderRequest) throws RiderExistsException {
-        Rider rider = riderService.login(loginRiderRequest);
+        LoginRiderResponse rider = riderService.login(loginRiderRequest);
         ApiResponse apiResponse = ApiResponse.builder()
                 .message("login successful!")
                 .status("success")

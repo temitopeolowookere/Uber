@@ -8,6 +8,7 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.validation.annotation.Validated;
 
@@ -31,6 +32,7 @@ public class AppUser {
     private String address;
     @Enumerated(value = EnumType.STRING)
     private Gender Gender;
+    @Size(message = "password can not be less than 8 characters", min = 6)
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$",
             message = "Invalid Password pattern.Password must contain 8 to 20 characters at least one digit, lower, upper case and one special character."
     )

@@ -1,9 +1,6 @@
 package com.semicolon.oTaxi.data.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +11,14 @@ import org.springframework.validation.annotation.Validated;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "Drivers")
+@Entity
+@Table(name = "Drivers")
 @Validated
-
-
-
 
 public class Driver extends AppUser{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String location;
+
 
 }

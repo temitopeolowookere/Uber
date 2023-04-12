@@ -18,7 +18,6 @@ public class RegisterRiderRequest {
     private String email;
     private String phoneNumber;
     private String address;
-    @Size(message = "password can not be less than 8 characters", min = 6)
     private String password;
     private Gender gender;
 
