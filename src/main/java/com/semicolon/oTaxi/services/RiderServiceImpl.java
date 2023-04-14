@@ -9,11 +9,10 @@ import com.semicolon.oTaxi.dto.response.RegisterRiderResponse;
 import com.semicolon.oTaxi.exceptions.InvalidEmailException;
 import com.semicolon.oTaxi.exceptions.MismatchedPasswordException;
 import com.semicolon.oTaxi.exceptions.RiderExistsException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.semicolon.oTaxi.utils.ValidateEmail.isvalidEmail;
+import static com.semicolon.oTaxi.utils.ValidateEmail.isValidEmail;
 @Service
 public class RiderServiceImpl implements RiderService{
     @Autowired
@@ -21,7 +20,7 @@ public class RiderServiceImpl implements RiderService{
 
     @Override
     public RegisterRiderResponse register(RegisterRiderRequest registerRiderRequest) throws InvalidEmailException, RiderExistsException, MismatchedPasswordException {
-        if(isvalidEmail(registerRiderRequest.getEmail())){
+        if(isValidEmail(registerRiderRequest.getEmail())){
             if(riderRepository.existsByEmail(registerRiderRequest.getEmail().toLowerCase())) throw new RiderExistsException("This rider already exist");
 
                 Rider rider = new Rider();
