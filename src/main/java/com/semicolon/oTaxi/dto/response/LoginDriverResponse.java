@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 
 
+
 public class LoginDriverResponse {
     private String email;
     private String phoneNUmber;

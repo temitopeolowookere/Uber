@@ -22,6 +22,7 @@ import org.springframework.validation.annotation.Validated;
 @MappedSuperclass
 
 public class AppUser {
+    private String name;
     private String lastName;
     private String firstName;
     @Column(unique = true)

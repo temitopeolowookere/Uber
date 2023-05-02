@@ -1,5 +1,6 @@
 package com.semicolon.oTaxi.data.models;
 
+import com.semicolon.oTaxi.data.models.enums.Driverstatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +20,8 @@ public class Driver extends AppUser{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-
+    private boolean isEnabled;
+    @Enumerated(value = EnumType.STRING)
+    private Driverstatus driverstatus;
+    private String location;
 }

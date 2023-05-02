@@ -7,6 +7,7 @@ import com.semicolon.oTaxi.dto.request.RegisterRiderRequest;
 import com.semicolon.oTaxi.dto.response.LoginRiderResponse;
 import com.semicolon.oTaxi.dto.response.RegisterRiderResponse;
 import com.semicolon.oTaxi.exceptions.InvalidEmailException;
+import com.semicolon.oTaxi.exceptions.InvalidRiderException;
 import com.semicolon.oTaxi.exceptions.MismatchedPasswordException;
 import com.semicolon.oTaxi.exceptions.RiderExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
