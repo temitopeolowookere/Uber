@@ -50,4 +50,7 @@ public class RiderController {
                 .build();
         return new ResponseEntity<>(apiResponse, HttpStatus.ACCEPTED);
     }
+
+
+
 }

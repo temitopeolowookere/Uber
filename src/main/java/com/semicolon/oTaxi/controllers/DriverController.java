@@ -1,11 +1,14 @@
 package com.semicolon.oTaxi.controllers;
 
 
+import com.semicolon.oTaxi.dto.request.LoginDriverRequest;
 import com.semicolon.oTaxi.dto.request.RegisterDriverRequest;
 import com.semicolon.oTaxi.dto.request.RegisterRiderRequest;
 import com.semicolon.oTaxi.dto.response.ApiResponse;
+import com.semicolon.oTaxi.dto.response.LoginDriverResponse;
 import com.semicolon.oTaxi.dto.response.RegisterDriverResponse;
 import com.semicolon.oTaxi.exceptions.DriverExistsException;
+import com.semicolon.oTaxi.exceptions.InvalidDriverexception;
 import com.semicolon.oTaxi.exceptions.InvalidEmailException;
 import com.semicolon.oTaxi.exceptions.MismatchedPasswordException;
 import com.semicolon.oTaxi.services.DriverService;
@@ -40,7 +43,16 @@ public class DriverController {
             return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
 
         }
-
+        @GetMapping("/driver/login/")
+    public ResponseEntity<?> login(@RequestBody @NotNull @Valid LoginDriverRequest request) throws InvalidDriverexception, DriverExistsException {
+            LoginDriverResponse driver = driverService.login(request);
+        ApiResponse apiResponse = ApiResponse.builder()
+                .message("login successful!")
+                .status("success")
+                .data(driver)
+                .build();
+        return new ResponseEntity<>(apiResponse, HttpStatus.ACCEPTED);
+    }
 
 
 
