@@ -1,6 +1,7 @@
 package com.semicolon.oTaxi.dto.response;
 
 import lombok.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Getter
 @Setter
@@ -9,8 +10,9 @@ import lombok.*;
 @Builder
 
 public class RegisterDriverResponse {
-    private String message;
     private String fullName;
+    private String message;
+
     private String phoneNumber;
     private String gender;
 

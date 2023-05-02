@@ -31,7 +31,6 @@ public class RiderController {
                 .fullName(registerRiderRequest.getLastName() + " " + registerRiderRequest.getFirstName())
                 .gender(registerRiderRequest.getGender())
                 .phoneNumber(registerRiderRequest.getPhoneNumber())
-                .message("Welcome on board")
                 .build();
         ApiResponse apiResponse = ApiResponse.builder()
                 .message("Rider created successfully!")
