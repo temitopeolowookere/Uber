@@ -1,6 +1,7 @@
 package com.semicolon.oTaxi.services;
 
 import com.semicolon.oTaxi.data.models.Driver;
+import com.semicolon.oTaxi.data.models.enums.Driverstatus;
 import com.semicolon.oTaxi.data.repositories.DriverRepository;
 import com.semicolon.oTaxi.dto.request.LoginDriverRequest;
 import com.semicolon.oTaxi.dto.request.LoginRiderRequest;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.semicolon.oTaxi.data.models.enums.Driverstatus.AVAILABLE;
 import static com.semicolon.oTaxi.utils.ValidateEmail.isValidEmail;
 
 @Service
@@ -48,13 +50,18 @@ public class DriverServiceImpl implements DriverService{
     @Override
     public LoginDriverResponse login(LoginDriverRequest request) throws InvalidDriverexception {
          Optional<Driver> driver= driverRepository.findByEmail(request.getEmail().toLowerCase());
-         if(driver.isPresent() && request.getPassword().equals(driver.get().getEmail())){
-             driver.get().setDriverstatus(request.getDriverstatus());
+         if(driver.isPresent() && request.getPassword().equals(driver.get().getPassword())){
+             driver.get().setDriverstatus(AVAILABLE);
              driver.get().setLocation(request.getLocation());
              driverRepository.save(driver.get());
              return LoginDriverResponse
                      .builder()
-                     .message("Welcome back" + driver.get().getName()+ " lets go for some rides")
+                     .email(driver.get().getEmail())
+                     .phoneNUmber(driver.get().getPhoneNumber())
+                     .lastName(driver.get().getLastName())
+                     .location(driver.get().getLocation())
+                     .driverstatus(driver.get().getDriverstatus())
+                     .message("Welcome back " + driver.get().getLastName()+ ", lets go for some rides")
                      .build();
          }
          throw  new InvalidDriverexception("invalid Driver details");

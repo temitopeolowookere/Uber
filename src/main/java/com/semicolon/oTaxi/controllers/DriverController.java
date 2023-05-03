@@ -21,13 +21,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/Taxi/Driver")
+@RequestMapping("/api/v1/taxi/driver")
 
 public class DriverController {
         private final DriverService driverService;
         @Autowired
         public DriverController(DriverService driverService) {this.driverService = driverService;}
-        @PostMapping("/driver/register")
+        @PostMapping("/register")
     public ResponseEntity<?>createDriver(@RequestBody @NotNull @Valid RegisterDriverRequest registerDriverRequest)throws MismatchedPasswordException, InvalidEmailException, DriverExistsException{
            driverService.register(registerDriverRequest);
             RegisterDriverResponse dataToBeReturned =RegisterDriverResponse.builder()
@@ -43,7 +43,7 @@ public class DriverController {
             return new ResponseEntity<>(apiResponse, HttpStatus.CREATED);
 
         }
-        @GetMapping("/driver/login/")
+        @GetMapping("/login")
     public ResponseEntity<?> login(@RequestBody @NotNull @Valid LoginDriverRequest request) throws InvalidDriverexception, DriverExistsException {
             LoginDriverResponse driver = driverService.login(request);
         ApiResponse apiResponse = ApiResponse.builder()
