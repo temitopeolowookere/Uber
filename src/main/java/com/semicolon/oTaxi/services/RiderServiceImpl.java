@@ -33,6 +33,7 @@ public class RiderServiceImpl implements RiderService{
                 rider.setEmail(registerRiderRequest.getEmail().toLowerCase());
                 rider.setPassword(registerRiderRequest.getPassword());
                 Rider savedRider = riderRepository.save(rider);
+
                 RegisterRiderResponse registerRiderResponse = new RegisterRiderResponse();
                 registerRiderResponse.setMessage("Rider " + savedRider.getLastName() + " has been registered successfully!. ");
                 return registerRiderResponse;

@@ -47,6 +47,7 @@ public class DriverServiceImpl implements DriverService{
         }throw new InvalidEmailException("this email is invalid");
     }
 
+
     @Override
     public LoginDriverResponse login(LoginDriverRequest request) throws InvalidDriverexception {
          Optional<Driver> driver= driverRepository.findByEmail(request.getEmail().toLowerCase());
